@@ -1,8 +1,6 @@
 version: "3.3"
-
 services:
  web :
    image: "vinodkumar95/notes-app:latest"
    Ports : 
     - "8000:8000"
-  
