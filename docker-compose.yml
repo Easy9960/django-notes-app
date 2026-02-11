@@ -15,22 +15,10 @@ services:
 
   django_app:
     build:
-      context: .
+      web: .
     image: "vinodkumar95/notes-app:latest"
     ports:
       - "8000:8000"
-    command: sh -c "python manage.py migrate --noinput && gunicorn notesapp.wsgi --bind 0.0.0.0:8000"
-    env_file:
-      - ".env"
-    depends_on:
-      - db
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/admin || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
     networks:
       - notes-app-nw
 
