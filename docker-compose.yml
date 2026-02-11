@@ -1,42 +1,8 @@
-version: "3.8"
+version: "3.3"
 
 services:
-  nginx:
-    build: ./nginx
-    image: nginx
-    container_name: "nginx_cont"
-    ports:
-      - "80:80"
-    restart: always
-    depends_on:
-      - django_app
-    networks:
-      - notes-app-nw
-
-  django_app:
-    web:
-    image: "vinodkumar95/notes-app:latest"
-    ports:
-      - "8000:8000"
-    networks:
-      - notes-app-nw
-
-  db:
-    image: mysql
-    container_name: "db_cont"
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=test_db
-    volumes:
-      - ./data/mysql/db:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 60s
-    networks:
-      - notes-app-nw
-
-networks:
-  notes-app-nw:
+ web :
+   image: "vinodkumar95/notes-app:latest"
+   Ports : 
+    - "8000:8000"
+  
