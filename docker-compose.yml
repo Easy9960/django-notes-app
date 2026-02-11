@@ -14,8 +14,7 @@ services:
       - notes-app-nw
 
   django_app:
-    build:
-      web: .
+    web:
     image: "vinodkumar95/notes-app:latest"
     ports:
       - "8000:8000"
